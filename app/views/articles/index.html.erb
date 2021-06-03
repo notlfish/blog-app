@@ -4,6 +4,9 @@
     <% @articles.each do |article| %>
         <li>
             <%= link_to article.title, article, class: "grey-link" %>
+            <span class="article-date">
+                <%= article.created_at.to_date %>
+            </span>
         </li>
     <% end %>
 </ul>
