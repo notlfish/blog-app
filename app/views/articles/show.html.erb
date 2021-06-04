@@ -12,35 +12,7 @@
 </ul>
 
 <h2>Comments</h2>
-<% @article.comments.each_with_index do |comment, i| %>
-  <div class="comment-container
-    <%= 'grey-comment' if i.even? %>">
-    <div class="commenter-container">
-      <p>
-        <strong><%= comment.commenter %></strong>
-      </p>
-      <p>
-        <%= comment.created_at.to_date %>
-      </p>
-    </div>
-
-    <p class="comment-body">
-      <%= comment.body %>
-    </p>
-  </div>
-<% end %>
+<%= render 'comments/comment', article: @article %>
 
 <h2>Add a comment:</h2>
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter, class: "w-100 input-text" %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body, class: "comment-textarea w-100 input-text" %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= render 'comments/form', article: @article %>
